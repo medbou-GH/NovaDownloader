@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDownloader — مُحمّل الفيديوهات والصوتيات الاحترافي للأندرويد وويندوز</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="NovaDownloader تطبيق احترافي متكامل وسريع لتنزيل الفيديوهات بدقة 4K و Full HD والتسجيلات الصوتية النقية MP3 (320kbps) من يوتيوب وتيك توك وإنستغرام وفيسبوك والمزيد.">
+    <meta name="keywords" content="تنزيل فيديو, محمل صوتيات, NovaDownloader, تحميل من يوتيوب, تحميل تيك توك بدون علامة مائية, MP3 320kbps, تحميل انستقرام, تطبيق اندرويد">
+    <meta name="author" content="BOUTAYEB MHAMED">
+    <link rel="canonical" href="https://medbou-gh.github.io/NovaDownloader/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medbou-gh.github.io/NovaDownloader/">
+    <meta property="og:title" content="NovaDownloader — تنزيل الفيديوهات والصوتيات بأعلى جودة">
+    <meta property="og:description" content="حمّل مقاطع الفيديو والصوتيات بضغطة زر واحدة بأعلى جودة متوفرة (حتى 4K و 320kbps MP3) مع دعم أشهر المنصات العالمية.">
+    <meta property="og:image" content="app_icon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://medbou-gh.github.io/NovaDownloader/">
+    <meta property="twitter:title" content="NovaDownloader — مُحمّل الوسائط الذكي">
+    <meta property="twitter:description" content="التطبيق الأسرع والأكثر أماناً لتنزيل الوسائط المتعددة للأندرويد وويندوز.">
+    <meta property="twitter:image" content="app_icon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="app_icon.png">
+
+    <!-- Google Fonts: Cairo (Arabic) & Plus Jakarta Sans (Latin/Numbers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.45);
+            --primary-dark: #1d4ed8;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(18, 25, 43, 0.72);
+            --bg-card-hover: rgba(28, 38, 64, 0.85);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(59, 130, 246, 0.4);
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 0.98);
+            --border-card: rgba(148, 163, 184, 0.22);
+            --border-hover: rgba(59, 130, 246, 0.5);
+            
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.75;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ambient-blob-1 {
+            position: absolute;
+            top: -10%;
+            right: 15%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0) 70%);
+            filter: blur(60px);
+            border-radius: 50%;
+            animation: pulseSlow 9s ease-in-out infinite alternate;
+        }
+
+        .ambient-blob-2 {
+            position: absolute;
+            top: 35%;
+            left: -8%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, rgba(139, 92, 246, 0) 70%);
+            filter: blur(70px);
+            border-radius: 50%;
+            animation: pulseSlow 12s ease-in-out infinite alternate-reverse;
+        }
+
+        .ambient-blob-3 {
+            position: absolute;
+            bottom: 10%;
+            right: 25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0) 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+
+        @keyframes pulseSlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+            100% { transform: scale(1.15) translate(30px, 20px); opacity: 1; }
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            margin: 16px auto 0;
+            max-width: 1220px;
+            padding: 0 20px;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 9999px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon-wrapper {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px var(--primary-glow);
+            overflow: hidden;
+        }
+
+        .brand-icon-wrapper img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        [data-theme="light"] .brand-title {
+            background: linear-gradient(135deg, #0f172a 40%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-subtitle {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: -3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-theme {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-theme:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: rotate(15deg);
+        }
+
+        .btn-nav-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        .btn-nav-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            padding: 8px 18px;
+            border-radius: 9999px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 28px;
+            backdrop-filter: blur(8px);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-emerald);
+            animation: pulseEmerald 1.8s infinite;
+        }
+
+        @keyframes pulseEmerald {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .hero-title {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.22rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            padding: 16px 34px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px var(--primary-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::after {
+            left: 140%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.7);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-card);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 16px 28px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition);
+            backdrop-filter: blur(16px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .hero-meta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-meta-item svg {
+            color: var(--accent-emerald);
+        }
+
+        /* Mockup Preview Card */
+        .preview-wrapper {
+            margin: 50px auto 30px;
+            max-width: 880px;
+            perspective: 1000px;
+        }
+
+        .app-mockup {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(25px);
+            position: relative;
+            overflow: hidden;
+            text-align: right;
+            transition: var(--transition);
+        }
+
+        .app-mockup:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 35px 90px rgba(37, 99, 235, 0.2);
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-card);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .mockup-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Interactive Mockup Content */
+        .mockup-input-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        [data-theme="light"] .mockup-input-box {
+            background: rgba(241, 245, 249, 0.8);
+        }
+
+        .mockup-url-text {
+            color: #38bdf8;
+            font-family: 'Plus Jakarta Sans', monospace;
+            font-size: 0.92rem;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .btn-mockup-paste {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .download-card-preview {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .media-info-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .media-details {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .media-thumb-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .media-title-group h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .media-title-group p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .media-badge-tag {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 82%;
+            background: linear-gradient(90deg, #2563eb, #38bdf8, #10b981);
+            border-radius: 999px;
+            animation: shimmerBar 2.5s infinite linear;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            direction: ltr;
+        }
+
+        /* Platforms Section */
+        .section {
+            padding: 90px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .platform-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .platform-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .platform-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .platform-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .platform-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Specific Platform Icon Styles */
+        .icon-youtube { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .icon-tiktok { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); }
+        .icon-instagram { background: rgba(217, 70, 239, 0.15); color: #e1306c; border: 1px solid rgba(217, 70, 239, 0.3); }
+        .icon-facebook { background: rgba(37, 99, 235, 0.15); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.3); }
+        .icon-twitter { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+        .icon-soundcloud { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
+        .icon-mixcloud { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+        .icon-dailymotion { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 34px 28px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        .feature-icon-wrapper {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            color: var(--primary);
+            font-size: 1.7rem;
+        }
+
+        .feature-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.75;
+        }
+
+        /* How it works */
+        .steps-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            counter-reset: step-counter;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            max-width: 820px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            user-select: none;
+        }
+
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 24px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 250px;
+            padding: 0 24px 22px;
+        }
+
+        /* Download Banner CTA */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            border-radius: var(--radius-lg);
+            padding: 55px 35px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            margin: 40px auto 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .cta-banner p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-card);
+            background: rgba(10, 14, 23, 0.9);
+            padding: 50px 0 30px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] footer {
+            background: rgba(241, 245, 249, 0.95);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-card);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.88rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2.6rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.1rem; }
+            .hero-subtitle { font-size: 1.05rem; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .cta-banner { padding: 35px 20px; }
+            .cta-banner h2 { font-size: 1.85rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow">
+        <div class="ambient-blob-1"></div>
+        <div class="ambient-blob-2"></div>
+        <div class="ambient-blob-3"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <nav class="nav-inner">
+            <a href="#" class="brand">
+                <div class="brand-icon-wrapper">
+                    <img src="app_icon.png" alt="NovaDownloader Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">NovaDownloader</span>
+                    <span class="brand-subtitle">محمل الوسائط الذكي</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#platforms">المنصات المدعومة</a></li>
+                <li><a href="#how-it-works">طريقة الاستخدام</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="btn-theme" id="themeToggle" title="تبديل المظهر" aria-label="Toggle Theme">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#download" class="btn-nav-download">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>تحميل مجاناً</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge-pill">
+                <span class="pulse-dot"></span>
+                <span>الإصدار V2.0 الرسمي متاح الآن للأندرويد وويندوز</span>
+            </div>
+
+            <h1 class="hero-title">
+                تنزيل الفيديوهات والصوتيات <br>
+                <span class="text-gradient">بأعلى دقة وبسرعة البرق</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                التطبيق الأسهل والأقوى لتحميل الفيديو بجودة <strong>4K و 1080p</strong> والتسجيلات الصوتية عالية النقاء <strong>MP3 (320kbps)</strong> من أشهر المنصات العالمية مباشرة إلى هاتفك أو حاسوبك بدون أي تعقيد.
+            </p>
+
+            <div class="hero-cta-group" id="download">
+                <a href="https://github.com/medbou-GH/NovaDownloader/releases" class="btn-primary" id="btnDownloadAndroid">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.411 13.8559 8.125 12 8.125c-1.8559 0-3.5902.286-5.1368.8247L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.784h24c-.3432-4.1251-2.6889-7.5973-6.1185-9.4626"/>
+                    </svg>
+                    <span>تحميل للأندرويد (APK)</span>
+                </a>
+
+                <a href="https://github.com/medbou-GH/NovaDownloader" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.401H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.802"/>
+                    </svg>
+                    <span>نسخة ويندوز (PC)</span>
+                </a>
+
+                <a href="privacy-policy.html" class="btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>سياسة الخصوصية</span>
+                </a>
+            </div>
+
+            <div class="hero-meta-bar">
+                <div class="hero-meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>تطبيق مجاني 100%</span>
+                </div>
+                <div class="hero-meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>بدون تسجيل حساب</span>
+                </div>
+                <div class="hero-meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>تنزيل في الخلفية بأمان</span>
+                </div>
+                <div class="hero-meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>صوت فائق الدقة 320kbps</span>
+                </div>
+            </div>
+
+            <!-- Interactive App Preview Mockup -->
+            <div class="preview-wrapper">
+                <div class="app-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                        </div>
+                        <div class="mockup-status">
+                            <span>جاري التنزيل المباشر</span>
+                            <span class="pulse-dot"></span>
+                        </div>
+                    </div>
+
+                    <div class="mockup-input-box">
+                        <span class="mockup-url-text">https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+                        <button class="btn-mockup-paste">تحليل الرابط</button>
+                    </div>
+
+                    <div class="download-card-preview">
+                        <div class="media-info-row">
+                            <div class="media-details">
+                                <div class="media-thumb-badge">▶</div>
+                                <div class="media-title-group">
+                                    <h4>ملف فيديو فائق الوضوح (4K Ultra HD)</h4>
+                                    <p>YouTube • MP4 • 60 FPS • 145 MB</p>
+                                </div>
+                            </div>
+                            <span class="media-badge-tag">جاري التنزيل</span>
+                        </div>
+
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill"></div>
+                        </div>
+
+                        <div class="progress-meta">
+                            <span>82% مكتمل</span>
+                            <span>8.4 MB/s • متبقي 14 ثانية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Platforms Section -->
+        <section class="section" id="platforms">
+            <div class="section-header">
+                <span class="section-tag">المنصات المدعومة</span>
+                <h2 class="section-title">محرك ذكي يدعم أشهر المنصات العالمية</h2>
+                <p class="section-desc">يتعرف NovaDownloader تلقائياً على الرابط ويستخرج أفضل جودة متاحة بدون فقدان أو ضغط وهمي.</p>
+            </div>
+
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-icon icon-youtube">▶</div>
+                    <div class="platform-info">
+                        <h3>YouTube</h3>
+                        <p>فيديوهات 4K و Full HD وصوت MP3/M4A</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-tiktok">♪</div>
+                    <div class="platform-info">
+                        <h3>TikTok</h3>
+                        <p>تنزيل فائق السرعة وبدون علامة مائية</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-instagram">📷</div>
+                    <div class="platform-info">
+                        <h3>Instagram</h3>
+                        <p>Reels، Stories والمنشورات بأعلى جودة</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-facebook">f</div>
+                    <div class="platform-info">
+                        <h3>Facebook</h3>
+                        <p>مقاطع الفيديو العامة والـ Reels بدقة HD</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-twitter">𝕏</div>
+                    <div class="platform-info">
+                        <h3>X (Twitter)</h3>
+                        <p>حفظ الفيديوهات والمقاطع المتحركة بسهولة</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-soundcloud">☁</div>
+                    <div class="platform-info">
+                        <h3>SoundCloud</h3>
+                        <p>تنزيل الأغاني والصوتيات بجودة 320kbps</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-mixcloud">🎧</div>
+                    <div class="platform-info">
+                        <h3>Mixcloud</h3>
+                        <p>حفظ الميكسات الطويلة والبودكاست بالكامل</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon icon-dailymotion">dm</div>
+                    <div class="platform-info">
+                        <h3>Dailymotion</h3>
+                        <p>تحميل الفيديوهات بجودات متعددة 1080p</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="features">
+            <div class="section-header">
+                <span class="section-tag">لماذا NovaDownloader؟</span>
+                <h2 class="section-title">صُمم ليكون التطبيق الأسرع والأكثر تكاملاً</h2>
+                <p class="section-desc">مزيج من الأداء العالي والواجهة العربية العصرية بدون إعلانات مزعجة أو تعقيد.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">⚡</div>
+                    <h3 class="feature-title">سرعة تنزيل فائقة</h3>
+                    <p class="feature-desc">محرك تنزيل متقدم يستغل كامل سرعة اتصالك عبر تجزئة التدفق وتنزيل المقاطع في الخلفية بسلاسة.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🎵</div>
+                    <h3 class="feature-title">تحويل صوتي نقي (320kbps)</h3>
+                    <p class="feature-desc">استخرج الموسيقى والمقاطع الصوتية بصيغة MP3 أو M4A بأعلى معدل بت حقيقي متوفر لتجربة استماع نقية.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🛡️</div>
+                    <h3 class="feature-title">أمان تام وخصوصية صارمة</h3>
+                    <p class="feature-desc">لا نجمع بياناتك الشخصية ولا نطلب تسجيل دخول. بياناتك وسجل تنزيلاتك محفوظة محلياً في جهازك فقط.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">📱</div>
+                    <h3 class="feature-title">استمرار التنزيل في الخلفية</h3>
+                    <p class="feature-desc">استمر في استخدام تطبيقاتك الأخرى بينما يعمل التطبيق في الخلفية مع إشعار تفاعلي يوضح نسبة الإنجاز والسرعة.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">📁</div>
+                    <h3 class="feature-title">إدارة ذكية للملفات</h3>
+                    <p class="feature-desc">سجل متكامل للتنزيلات السابقة مع ميزة التشغيل المباشر وإعادة التسمية التلقائية لتفادي تكرار الأسماء.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🎨</div>
+                    <h3 class="feature-title">واجهة عربية ومظهر ليلي فاخر</h3>
+                    <p class="feature-desc">تصميم عربي أصيل بدعم كامل لليمين إلى اليسار (RTL) مع خيار الوضع المظلم لحماية العين وتوفير البطارية.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section" id="how-it-works">
+            <div class="section-header">
+                <span class="section-tag">بساطة الاستخدام</span>
+                <h2 class="section-title">كيف يعمل في 3 خطوات بسيطة؟</h2>
+                <p class="section-desc">لا تحتاج لأي خبرة تقنية — التنزيل في ثوانٍ معدودة.</p>
+            </div>
+
+            <div class="steps-wrapper">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">انسخ الرابط</h3>
+                    <p class="step-desc">انسخ رابط الفيديو أو المقطع الصوتي من أي منصة مدعومة (YouTube, TikTok, Instagram...).</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">الصق الرابط</h3>
+                    <p class="step-desc">افتح NovaDownloader، وسيقوم التطبيق بالتعرف التلقائي على الرابط واستخراج خيارات الجودة.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">اختر الجودة وحمّل</h3>
+                    <p class="step-desc">اختر صيغة الفيديو (MP4) أو الصوت (MP3/M4A) واضغط تنزيل ليتم حفظه فوراً في جهازك.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" id="faq">
+            <div class="section-header">
+                <span class="section-tag">الأسئلة المتكررة</span>
+                <h2 class="section-title">إجابات على أكثر الاستفسارات شيوعاً</h2>
+                <p class="section-desc">كل ما تحتاج لمعرفته حول NovaDownloader وطريقة عمله.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل تطبيق NovaDownloader مجاني؟</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        نعم! التطبيق مجاني بالكامل ويوفر جميع ميزات التنزيل واستخراج الصوتيات بدقة عالية بدون أي رسوم إلزامية.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل أحتاج لتسجيل حساب لاستخدام التطبيق؟</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        إطلاقاً. لا يطلب NovaDownloader أي إنشاء حساب أو بريد إلكتروني أو كلمات مرور، مما يضمن خصوصيتك الكاملة.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>أين يتم حفظ الملفات المنزلة؟</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        في نظام أندرويد، يتم الحفظ في مجلد التنزيلات القياسي العام (Downloads/NovaDownloader) لتتمكن من الوصول لملفاتك من أي مشغل وسائط. وفي ويندوز يتم الحفظ في مجلد التنزيلات الافتراضي ويمكنك تخصيصه من الإعدادات.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يدعم التطبيق التنزيل بدقة 4K؟</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، يدعم تنزيل أعلى جودة يوفرها المقطع الأصلي بما في ذلك 4K و 1440p و 1080p Full HD و 720p.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف يحترم التطبيق خصوصيتي وإعلانات Google؟</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        نحن نلتزم بأعلى معايير الخصوصية وسياسات Google Play و Google AdMob، مع تطبيق منصة موافقة المستخدمين (Google UMP) وخيار مراجعة إعدادات الخصوصية في أي وقت. يمكنك قراءة التفاصيل في صفحة سياسة الخصوصية.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Banner -->
+        <div class="cta-banner">
+            <h2>جاهز لتجربة تنزيل استثنائية؟</h2>
+            <p>انضم لآلاف المستخدمين واستمتع بتنزيل فيديوهاتك وموسيقاك المفضلة بأعلى دقة وأسهل طريقة.</p>
+            <div class="hero-cta-group" style="margin-bottom: 0;">
+                <a href="https://github.com/medbou-GH/NovaDownloader/releases" class="btn-primary">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.411 13.8559 8.125 12 8.125c-1.8559 0-3.5902.286-5.1368.8247L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.784h24c-.3432-4.1251-2.6889-7.5973-6.1185-9.4626"/>
+                    </svg>
+                    <span>تحميل تطبيق الأندرويد الآن</span>
+                </a>
+                <a href="privacy-policy.html" class="btn-secondary">
+                    <span>مراجعة سياسة الخصوصية</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>NovaDownloader</h3>
+                    <p>تطبيق الوسائط المتعددة الذكي لأنظمة الأندرويد وويندوز. تنزيل الفيديوهات والصوتيات بأعلى جودة بضغطة زر واحدة.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#features">المميزات الرئيسية</a></li>
+                        <li><a href="#platforms">المنصات المدعومة</a></li>
+                        <li><a href="#download">روابط التحميل</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>الخصوصية والدعم</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+                        <li><a href="https://github.com/medbou-GH/NovaDownloader" target="_blank" rel="noopener noreferrer">مستودع GitHub</a></li>
+                        <li><a href="mailto:support@novadownloader.com">الدعم الفني</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 BOUTAYEB MHAMED. جميع الحقوق محفوظة.</p>
+                <p>مبني بأحدث تقنيات الويب والأمان الرقمي.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // FAQ Accordion Toggle
+        document.querySelectorAll('.faq-question').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close others
+                document.querySelectorAll('.faq-item').forEach(other => other.classList.remove('active'));
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Theme Toggle (Light / Dark)
+        const themeBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('nova_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('nova_theme', target);
+        });
+    </script>
+</body>
+</html>
