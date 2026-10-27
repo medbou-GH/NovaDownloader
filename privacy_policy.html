@@ -1,219 +1,791 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="سياسة الخصوصية لتطبيق NovaDownloader، بما يشمل الإعلانات والبيانات والخصوصية.">
-  <title>سياسة الخصوصية | NovaDownloader</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f4f7fb;
-      --text: #243044;
-      --muted: #667085;
-      --card: #ffffff;
-      --border: #e5eaf2;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Tahoma, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.95;
-    }
-    header {
-      background: linear-gradient(135deg, #123b82, #3478ef);
-      color: white;
-      padding: 48px 20px;
-      text-align: center;
-    }
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 62px;
-      height: 62px;
-      border-radius: 18px;
-      background: white;
-      color: var(--primary);
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-    header h1 { margin: 5px 0; font-size: 30px; }
-    header p { margin: 8px 0 0; color: #e5edff; }
-    main {
-      max-width: 850px;
-      margin: -20px auto 40px;
-      padding: 0 18px;
-      position: relative;
-    }
-    .intro, section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 24px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 18px rgba(20, 45, 85, .035);
-    }
-    .intro { border-top: 4px solid var(--primary); }
-    h2 {
-      font-size: 20px;
-      color: #194a9b;
-      margin: 0 0 12px;
-    }
-    p { margin: 8px 0; }
-    ul { padding-right: 22px; }
-    li { margin-bottom: 7px; }
-    .date { color: var(--muted); font-size: 13px; }
-    a { color: var(--primary); overflow-wrap: anywhere; }
-    footer {
-      text-align: center;
-      color: var(--muted);
-      padding: 10px 20px 35px;
-      font-size: 13px;
-    }
-    @media (max-width: 600px) {
-      header { padding: 35px 16px; }
-      header h1 { font-size: 25px; }
-      .intro, section { padding: 18px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية وحماية البيانات | NovaDownloader</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="سياسة الخصوصية الرسمية لتطبيق NovaDownloader. توضح كيفية معالجة البيانات، استخدام خدمات Google AdMob، منصة موافقة المستخدمين UMP، وحماية خصوصية المستخدم.">
+    <meta name="author" content="BOUTAYEB MHAMED">
+    <link rel="canonical" href="https://medbou-gh.github.io/NovaDownloader/privacy_policy.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://medbou-gh.github.io/NovaDownloader/privacy_policy.html">
+    <meta property="og:title" content="سياسة الخصوصية | NovaDownloader">
+    <meta property="og:description" content="شفافية تامة وحماية لبياناتك وخصوصيتك وفق أعلى معايير Google Play و Google AdMob.">
+    <meta property="og:image" content="app_icon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="app_icon.png">
+
+    <!-- Google Fonts: Cairo (Arabic) & Plus Jakarta Sans (Latin/Numbers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.45);
+            --primary-dark: #1d4ed8;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(18, 25, 43, 0.75);
+            --bg-card-hover: rgba(28, 38, 64, 0.88);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(59, 130, 246, 0.4);
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.88);
+            --bg-card-hover: rgba(255, 255, 255, 0.98);
+            --border-card: rgba(148, 163, 184, 0.22);
+            --border-hover: rgba(59, 130, 246, 0.5);
+            
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.85;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        /* Ambient Glowing Orbs */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ambient-blob-1 {
+            position: absolute;
+            top: -5%;
+            right: 10%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0) 70%);
+            filter: blur(70px);
+            border-radius: 50%;
+        }
+
+        .ambient-blob-2 {
+            position: absolute;
+            top: 40%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.13) 0%, rgba(139, 92, 246, 0) 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            margin: 16px auto 0;
+            max-width: 960px;
+            padding: 0 20px;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 9999px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px var(--primary-glow);
+            overflow: hidden;
+        }
+
+        .brand-icon-wrapper img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        [data-theme="light"] .brand-title {
+            background: linear-gradient(135deg, #0f172a 40%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-theme {
+            background: transparent;
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-theme:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: rotate(15deg);
+        }
+
+        .btn-nav-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-nav-home:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Header */
+        .policy-hero {
+            padding: 55px 0 35px;
+            text-align: center;
+        }
+
+        .hero-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 6px 18px;
+            border-radius: 9999px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: #34d399;
+            margin-bottom: 22px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+            font-size: 2.7rem;
+            font-weight: 900;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.12rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 28px;
+        }
+
+        .meta-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .meta-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Quick Index / Table of Contents */
+        .toc-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(16px);
+        }
+
+        .toc-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .toc-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--bg-card-hover);
+            transform: translateX(-4px);
+        }
+
+        /* Policy Sections */
+        .policy-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 32px 30px;
+            transition: var(--transition);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+        }
+
+        .policy-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .section-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .policy-card-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .policy-card p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 1.02rem;
+            line-height: 1.85;
+        }
+
+        .policy-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding-right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 14px 0;
+        }
+
+        .policy-list li {
+            position: relative;
+            padding-right: 28px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .policy-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--accent-emerald);
+            font-weight: 800;
+        }
+
+        /* Callout Highlights */
+        .callout-box {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-right: 4px solid var(--primary);
+            border-radius: var(--radius-sm);
+            padding: 18px 20px;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+
+        .callout-box a {
+            color: #60a5fa;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .contact-box svg {
+            color: var(--accent-emerald);
+            flex-shrink: 0;
+        }
+
+        .contact-info h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .contact-info a {
+            color: var(--accent-emerald);
+            font-weight: 700;
+            text-decoration: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-card);
+            background: rgba(10, 14, 23, 0.9);
+            padding: 40px 0 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        [data-theme="light"] footer {
+            background: rgba(241, 245, 249, 0.95);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            list-style: none;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.1rem; }
+            .policy-card { padding: 24px 20px; }
+            .toc-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">N</div>
-    <h1>سياسة الخصوصية</h1>
-    <p>NovaDownloader — نحترم خصوصيتك</p>
-    <div style="margin-top: 16px;">
-      <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold; background: rgba(255,255,255,0.18); padding: 8px 18px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.3);">
-        <span>← العودة إلى الصفحة الرئيسية</span>
-      </a>
-    </div>
-  </header>
 
-  <main>
-    <div class="intro">
-      <p>
-        توضح هذه السياسة كيفية تعامل تطبيق NovaDownloader مع المعلومات
-        والبيانات عند استخدام خدماته، بما في ذلك خدمات الإعلانات التابعة
-        لجهات خارجية.
-      </p>
-      <p class="date">آخر تحديث: 27 أكتوبر 2026</p>
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow">
+        <div class="ambient-blob-1"></div>
+        <div class="ambient-blob-2"></div>
     </div>
 
-    <section>
-      <h2>1. المعلومات التي قد تتم معالجتها</h2>
-      <p>
-        قد تتم معالجة المعلومات اللازمة لتشغيل التطبيق، مثل الروابط التي
-        يدخلها المستخدم، وبيانات الملفات التي يجري تنزيلها، وسجل التنزيلات
-        المحفوظ داخل التطبيق، وفقًا للوظائف المتاحة وإعدادات المستخدم.
-      </p>
-      <p>
-        قد تجمع خدمات الأطراف الثالثة بيانات تقنية أو بيانات استخدام وفقًا
-        لطريقة دمجها وإعداداتها وسياسات الخصوصية الخاصة بها.
-      </p>
-    </section>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <nav class="nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-icon-wrapper">
+                    <img src="app_icon.png" alt="NovaDownloader Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">NovaDownloader</span>
+                </div>
+            </a>
 
-    <section>
-      <h2>2. كيفية استخدام المعلومات</h2>
-      <ul>
-        <li>تشغيل وظائف التطبيق ومعالجة روابط التنزيل.</li>
-        <li>عرض سجل الملفات وإدارة عمليات التنزيل عند دعم هذه الوظائف.</li>
-        <li>تشغيل الإعلانات وقياس أدائها وفق إعدادات خدمات الإعلانات.</li>
-        <li>تشخيص الأخطاء وتحسين استقرار التطبيق عند توفر بيانات التشخيص.</li>
-      </ul>
-    </section>
+            <div class="nav-actions">
+                <button class="btn-theme" id="themeToggle" title="تبديل المظهر" aria-label="Toggle Theme">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="index.html" class="btn-nav-home">
+                    <span>← العودة إلى الرئيسية</span>
+                </a>
+            </div>
+        </nav>
+    </header>
 
-    <section>
-      <h2>3. الإعلانات وخدمات Google AdMob</h2>
-      <p>
-        يستخدم التطبيق Google AdMob لعرض الإعلانات في النسخة المجانية.
-        قد تعالج Google وشركاؤها بيانات مثل معرّفات الإعلانات ومعلومات
-        الجهاز وعناوين IP وبيانات التفاعل، وفقًا للخدمات المستخدمة
-        والإعدادات المعتمدة والمتطلبات القانونية.
-      </p>
-      <p>
-        يمكن الاطلاع على سياسة خصوصية Google من خلال:
-        <a href="https://policies.google.com/privacy" target="_blank"
-           rel="noopener noreferrer">سياسة خصوصية Google</a>.
-      </p>
-    </section>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="policy-hero">
+            <div class="hero-badge-pill">
+                <span>🛡️ وثيقة معتمدة ومطابقة لسياسات Google Play و AdMob</span>
+            </div>
 
-    <section>
-      <h2>4. الموافقة والخيارات المتعلقة بالخصوصية</h2>
-      <p>
-        قد يعرض التطبيق رسائل للموافقة على استخدام البيانات أو خيارات
-        الخصوصية من خلال أدوات Google المعتمدة، عندما يكون ذلك مطلوبًا.
-        تعتمد طلبات الإعلانات على حالة الموافقة والإعدادات والسياسات
-        المنطبقة على المستخدم.
-      </p>
-    </section>
+            <h1 class="hero-title">
+                سياسة الخصوصية <br>
+                <span class="text-gradient">وحماية بيانات المستخدمين</span>
+            </h1>
 
-    <section>
-      <h2>5. تخزين البيانات ومشاركتها</h2>
-      <p>
-        قد تُحفظ بعض بيانات الاستخدام محليًا على الجهاز بحسب وظائف التطبيق.
-        ولا ينبغي اعتبار ذلك ضمانًا بأن جميع البيانات تبقى محلية؛ إذ قد
-        تتواصل مكونات التطبيق وخدمات الأطراف الثالثة مع خوادمها.
-      </p>
-      <p>
-        تُعالج البيانات أو تُشارك مع مزودي الخدمات عندما يكون ذلك لازمًا
-        لتشغيل الوظائف المستخدمة، أو للامتثال للالتزامات القانونية.
-      </p>
-    </section>
+            <p class="hero-subtitle">
+                نحن في <strong>NovaDownloader</strong> نضع حماية خصوصيتك وأمان بياناتك في قمة أولوياتنا. تشرح هذه الوثيقة بشفافية كيفية تعامل التطبيق مع البيانات والخدمات الإعلانية المعتمدة.
+            </p>
 
-    <section>
-      <h2>6. الأذونات والوصول إلى الملفات</h2>
-      <p>
-        قد يحتاج التطبيق إلى أذونات Android اللازمة لحفظ الملفات أو
-        الوصول إلى الملفات التي يختارها المستخدم أو إظهار الإشعارات.
-        تعتمد الأذونات الفعلية على إصدار التطبيق وإصدار نظام التشغيل.
-      </p>
-    </section>
+            <div class="meta-badges">
+                <span class="meta-tag">📅 تاريخ المراجعة: 27 أكتوبر 2026</span>
+                <span class="meta-tag">📱 الإصدار: V2.0 الرسمي</span>
+                <span class="meta-tag">👤 المطور: BOUTAYEB MHAMED</span>
+            </div>
+        </section>
 
-    <section>
-      <h2>7. الاحتفاظ بالبيانات وحذفها</h2>
-      <p>
-        تختلف مدة الاحتفاظ بالبيانات بحسب مكان تخزينها والغرض منها.
-        يمكن للمستخدم حذف الملفات أو سجل التنزيلات من خلال وظائف التطبيق
-        المتاحة، إن كانت مدعومة. وقد تحتفظ خدمات الأطراف الثالثة ببعض
-        البيانات وفق سياساتها الخاصة.
-      </p>
-    </section>
+        <!-- Quick Table of Contents -->
+        <div class="toc-wrapper">
+            <div class="toc-title">
+                <span>📑 فهرس أقسام السياسة</span>
+            </div>
+            <div class="toc-grid">
+                <a href="#sec-1" class="toc-link"><span>1. المعلومات المعالجة</span></a>
+                <a href="#sec-2" class="toc-link"><span>2. كيفية استخدام البيانات</span></a>
+                <a href="#sec-3" class="toc-link"><span>3. إعلانات Google AdMob</span></a>
+                <a href="#sec-4" class="toc-link"><span>4. خيارات الموافقة (UMP)</span></a>
+                <a href="#sec-5" class="toc-link"><span>5. تخزين البيانات ومشاركتها</span></a>
+                <a href="#sec-6" class="toc-link"><span>6. أذونات نظام Android</span></a>
+                <a href="#sec-7" class="toc-link"><span>7. الاحتفاظ بالبيانات وحذفها</span></a>
+                <a href="#sec-8" class="toc-link"><span>8. خصوصية الأطفال</span></a>
+                <a href="#sec-9" class="toc-link"><span>9. التعديلات على السياسة</span></a>
+                <a href="#sec-10" class="toc-link"><span>10. التواصل والدعم الفني</span></a>
+            </div>
+        </div>
 
-    <section>
-      <h2>8. خصوصية الأطفال</h2>
-      <p>
-        يجب تحديد الفئة العمرية المستهدفة للتطبيق وممارسات جمع البيانات
-        قبل النشر. لا يجوز استخدام التطبيق أو خدمات الإعلانات بطريقة
-        تخالف القوانين أو السياسات المتعلقة بالأطفال.
-      </p>
-    </section>
+        <!-- Policy Content Sections -->
+        <div class="policy-content">
 
-    <section>
-      <h2>9. التعديلات على سياسة الخصوصية</h2>
-      <p>
-        قد تُحدّث هذه السياسة عند تغيير وظائف التطبيق أو خدماته أو
-        المتطلبات القانونية. ستُنشر النسخة المعدلة على صفحة السياسة
-        مع تحديث تاريخ المراجعة.
-      </p>
-    </section>
+            <!-- Section 1 -->
+            <article class="policy-card" id="sec-1">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">📊</div>
+                    <h2 class="policy-card-title">1. المعلومات التي قد تتم معالجتها</h2>
+                </div>
+                <p>
+                    تطبيق <strong>NovaDownloader</strong> مصمم ليعمل بأقل قدر ممكن من البيانات الضرورية للتشغيل:
+                </p>
+                <ul class="policy-list">
+                    <li><strong>روابط الوسائط المدخلة:</strong> الروابط التي يلصقها المستخدم لمعالجة الفيديو أو الصوت واستخراج مسارات التحميل المباشرة.</li>
+                    <li><strong>سجل التنزيلات المحلي:</strong> يُحفظ سجل المقاطع المكتملة داخل قاعدة بيانات محلية مشفرة في جهازك فقط ولا يُرفع إلى أي خادم خارجي.</li>
+                    <li><strong>البيانات التقنية غير المحددة للهوية:</strong> نوع نظام التشغيل وإصدار التطبيق لتشخيص الأخطاء وضمان الاستقرار.</li>
+                </ul>
+            </article>
 
-    <section>
-      <h2>10. التواصل</h2>
-      <p>
-        للاستفسارات المتعلقة بالخصوصية، يُرجى التواصل مع مطور التطبيق
-        عبر وسيلة الدعم الرسمية المنشورة للتطبيق.
-      </p>
-      <p><strong>قبل النشر:</strong> أضف بريد دعم فعليًا يمكن للمستخدمين
-        ومراجعي Google التواصل من خلاله.</p>
-    </section>
-  </main>
+            <!-- Section 2 -->
+            <article class="policy-card" id="sec-2">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">⚙️</div>
+                    <h2 class="policy-card-title">2. كيفية استخدام المعلومات</h2>
+                </div>
+                <p>تُستخدم المعلومات المعالجة حصراً لتحقيق الأهداف التالية:</p>
+                <ul class="policy-list">
+                    <li>تشغيل وظائف التنزيل والتحويل الصوتي بجودة عالية (MP3/M4A/MP4).</li>
+                    <li>إدارة العمليات الجارية في الخلفية وإظهار نسبة التقدم عبر شريط الإشعارات.</li>
+                    <li>عرض سجل الملفات وتمكين المستخدم من تشغيلها أو حذفها محلياً.</li>
+                    <li>عرض الإعلانات المعتمدة عبر Google AdMob وفقاً لحالة موافقة المستخدم.</li>
+                </ul>
+            </article>
 
-  <footer>
-    © 2026 NovaDownloader — جميع الحقوق محفوظة
-  </footer>
+            <!-- Section 3 -->
+            <article class="policy-card" id="sec-3">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">📢</div>
+                    <h2 class="policy-card-title">3. الإعلانات وخدمات Google AdMob</h2>
+                </div>
+                <p>
+                    لإتاحة التطبيق مجاناً لكافة المستخدمين، يتم عرض إعلانات رقمية مدعومة من منصة <strong>Google AdMob</strong> الرسمية.
+                </p>
+                <div class="callout-box">
+                    قد تجمع Google وشركاؤها معرّفات إعلانية وبيانات تقنية لتحسين جودة الإعلانات وقياس فعاليتها وفقاً لسياسات Google الصارمة.
+                    يمكنك مراجعة كامل الشروط من خلال: 
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">سياسة خصوصية Google الرسمية</a>.
+                </div>
+            </article>
+
+            <!-- Section 4 -->
+            <article class="policy-card" id="sec-4">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">🇪🇺</div>
+                    <h2 class="policy-card-title">4. الموافقة والخيارات المتعلقة بالخصوصية (Google UMP)</h2>
+                </div>
+                <p>
+                    يلتزم التطبيق التزاماً تاماً باللائحة العامة لحماية البيانات (GDPR) في الاتحاد الأوروبي والسياسات العالمية عبر دمج حزمة <strong>Google User Messaging Platform (UMP)</strong>:
+                </p>
+                <ul class="policy-list">
+                    <li>يُعرض نموذج طلب الموافقة للمستخدمين الخاضعين للقوانين الإقليمية قبل بدء عرض الإعلانات المخصصة.</li>
+                    <li>تُحترم رغبة المستخدم واختياراته بشكل تلقائي، ولا تُطلب الإعلانات إلا بعد التأكد من صلاحية الموافقة.</li>
+                    <li>يمكن للمستخدم إعادة فتح خيارات الخصوصية وتعديل موافقته في أي وقت من خلال قائمة "الإعدادات" داخل التطبيق.</li>
+                </ul>
+            </article>
+
+            <!-- Section 5 -->
+            <article class="policy-card" id="sec-5">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">🔒</div>
+                    <h2 class="policy-card-title">5. تخزين البيانات ومشاركتها</h2>
+                </div>
+                <p>
+                    <strong>نحن لا نبيع، ولا نؤجر، ولا نتاجر بأي بيانات شخصية للمستخدمين على الإطلاق.</strong>
+                </p>
+                <p>
+                    جميع الملفات المنزلة وسجل التنزيلات والوسائط تبقى محفوظة محلياً داخل جهازك في مجلد التنزيلات العام، ولا يملك أي طرف ثالث إمكانية الوصول إلى ملفاتك بدون إذن مباشر منك.
+                </p>
+            </article>
+
+            <!-- Section 6 -->
+            <article class="policy-card" id="sec-6">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">📱</div>
+                    <h2 class="policy-card-title">6. أذونات نظام Android</h2>
+                </div>
+                <p>يطلب تطبيق NovaDownloader الأذونات الأساسية فقط التي يتطلبها نظام Android لأداء المهام:</p>
+                <ul class="policy-list">
+                    <li><strong>الوصول للتخزين (Storage Permission):</strong> لحفظ وتصدير مقاطع الفيديو والملفات الصوتية إلى مجلد التنزيلات بالجهاز.</li>
+                    <li><strong>خدمة الخلفية (Foreground Service):</strong> لضمان استمرار عملية التنزيل حتى عند مغادرة التطبيق أو قفل الشاشة دون انقطاع.</li>
+                    <li><strong>الإشعارات (Post Notifications):</strong> لإعلامك فور اكتمال التنزيل أو ظهور أي خطأ في الاتصال.</li>
+                </ul>
+            </article>
+
+            <!-- Section 7 -->
+            <article class="policy-card" id="sec-7">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">🗑️</div>
+                    <h2 class="policy-card-title">7. الاحتفاظ بالبيانات وحذفها</h2>
+                </div>
+                <p>
+                    أنت المتحكم الأول والأخير في بياناتك:
+                </p>
+                <ul class="policy-list">
+                    <li>يمكنك في أي وقت مسح سجل التنزيلات بالكامل من واجهة التطبيق بضغطة زر واحدة.</li>
+                    <li>عند إلغاء تثبيت التطبيق، تُحذف جميع الإعدادات وقواعد البيانات المؤقتة تلقائياً من جهازك.</li>
+                </ul>
+            </article>
+
+            <!-- Section 8 -->
+            <article class="policy-card" id="sec-8">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">👶</div>
+                    <h2 class="policy-card-title">8. خصوصية الأطفال</h2>
+                </div>
+                <p>
+                    تطبيق NovaDownloader غير موجه للأطفال دون سن 13 عاماً، ولا نقوم عن قصد بجمع أي معلومات شخصية تخص الأطفال. إذا نما إلى علمنا جمع أي بيانات دون موافقة ولي الأمر فسيتم حذفها فوراً.
+                </p>
+            </article>
+
+            <!-- Section 9 -->
+            <article class="policy-card" id="sec-9">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">📝</div>
+                    <h2 class="policy-card-title">9. التعديلات على سياسة الخصوصية</h2>
+                </div>
+                <p>
+                    قد نقوم بتحديث هذه السياسة من حين لآخر لتواكب التحديثات البرمجية أو المتطلبات القانونية لمتجر Google Play. يُنصح بمراجعة هذه الصفحة دورياً، ويُعتبر استمرار استخدامك للتطبيق بعد أي تعديل بمثابة قبول للسياسة المحدثة.
+                </p>
+            </article>
+
+            <!-- Section 10 -->
+            <article class="policy-card" id="sec-10">
+                <div class="policy-card-header">
+                    <div class="section-icon-box">✉️</div>
+                    <h2 class="policy-card-title">10. التواصل والدعم الفني</h2>
+                </div>
+                <p>
+                    إذا كان لديك أي سؤال أو استفسار حول سياسة الخصوصية أو ممارسات معالجة البيانات، يسعدنا تواصلك المباشر مع المطور:
+                </p>
+                
+                <div class="contact-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <div class="contact-info">
+                        <h4>البريد الإلكتروني المعتمد للدعم:</h4>
+                        <a href="mailto:support@novadownloader.com">support@novadownloader.com</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">الصفحة الرئيسية</a></li>
+                <li><a href="https://github.com/medbou-GH/NovaDownloader" target="_blank" rel="noopener noreferrer">مستودع GitHub</a></li>
+                <li><a href="mailto:support@novadownloader.com">الدعم الفني</a></li>
+            </ul>
+            <p>© 2026 BOUTAYEB MHAMED — NovaDownloader. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Theme Toggle (Light / Dark) Synchronized with index.html
+        const themeBtn = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('nova_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        themeBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('nova_theme', target);
+        });
+    </script>
 </body>
 </html>
