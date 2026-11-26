@@ -1,10 +1,10 @@
 {
-  "latestVersionCode": 14,
+  "latestVersionCode": 15,
   "latestVersionName": "1.6",
   "minRequiredVersionCode": 9,
-  "releaseNotes": "• تحسين سرعة إقلاع التطبيق وعرض الإعلانات دون تأخير\n• تحسينات في استقرار التنزيلات وعرض الإعلانات البينية\n• دعم كامل لأحدث معايير Android و Google Play",
-  "releaseNotesFr": "• Démarrage ultra-rapide et affichage immédiat sans latence\n• Améliorations de la stabilité des téléchargements et annonces interstitielles\n• Compatibilité totale avec les dernières normes Android et Google Play",
-  "releaseNotesEn": "• Ultra-fast startup and immediate ad rendering without latency\n• Enhanced download stability and interstitial ad optimization\n• Full compliance with latest Android and Google Play standards",
+  "releaseNotes": "• ترقية كاملة للأداء والتوافق مع أحدث معايير Android 15 و Android 16\n• دعم كامل لمعيار الذاكرة الحديث (16 Ko) مع تخفيض حجم التطبيق بنسبة 20%\n• إضافة خيار التقييم المباشر على Google Play لمشاركة آرائكم وملاحظاتكم ⭐\n• تحسين سرعة واستقرار التنزيلات وعرض الإعلانات بسلاسة فائقة دون أي تأخير",
+  "releaseNotesFr": "• Mise à niveau complète et compatibilité totale avec Android 15 et Android 16\n• Prise en charge officielle des tailles de page mémoire 16 Ko et réduction de la taille de l'application de 20%\n• Ajout d'une option directe pour noter et donner votre avis sur Google Play ⭐\n• Optimisation de la stabilité des téléchargements et affichage ultra-fluide des annonces sans latence",
+  "releaseNotesEn": "• Full upgrade and complete compatibility with Android 15 and Android 16\n• Official support for 16 KB memory page size requirements and 20% smaller app size\n• Added direct Google Play rating option to easily share your feedback ⭐\n• Improved download stability and ultra-smooth ad experience without delays",
   "playStoreUrl": "https://play.google.com/store/apps/details?id=com.novasoftware.novadownloader",
   "directDownloadUrl": "https://raw.githubusercontent.com/medbou-gh/NovaDownloader/main/NovaDownloader-Mobile/NovaDownloader-Mobile.apk",
   "isMandatory": false
