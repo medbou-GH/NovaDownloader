@@ -1,0 +1,11 @@
+{
+  "latestVersionCode": 14,
+  "latestVersionName": "1.6",
+  "minRequiredVersionCode": 9,
+  "releaseNotes": "• تحسين سرعة إقلاع التطبيق وعرض الإعلانات دون تأخير\n• تحسينات في استقرار التنزيلات وعرض الإعلانات البينية\n• دعم كامل لأحدث معايير Android و Google Play",
+  "releaseNotesFr": "• Démarrage ultra-rapide et affichage immédiat sans latence\n• Améliorations de la stabilité des téléchargements et annonces interstitielles\n• Compatibilité totale avec les dernières normes Android et Google Play",
+  "releaseNotesEn": "• Ultra-fast startup and immediate ad rendering without latency\n• Enhanced download stability and interstitial ad optimization\n• Full compliance with latest Android and Google Play standards",
+  "playStoreUrl": "https://play.google.com/store/apps/details?id=com.novasoftware.novadownloader",
+  "directDownloadUrl": "https://raw.githubusercontent.com/medbou-gh/NovaDownloader/main/NovaDownloader-Mobile/NovaDownloader-Mobile.apk",
+  "isMandatory": false
+}
